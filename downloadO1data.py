@@ -17,7 +17,7 @@ import re
 dirname = "O1"
 
 start, end = run_segment(dirname)
-timespan = range(start, end, 4096)                     #每段4096s
+timespan = range(start, end, 4096)                     #each 4096s
 
 runlist = timespan[0:10]
 # runlist = timespan[0:]
@@ -34,7 +34,7 @@ pattern2 = re.compile('L-.*.hdf5')
 def downHSpan(i):
     try:
         url1 = get_urls("H1", i, i+4096)[0]
-        if not os.path.exists( dirname  + '/' + pattern1.search(url1).group() ): #若不存在文件，则下载
+        if not os.path.exists( dirname  + '/' + pattern1.search(url1).group() ): #if not exist, then download
             os.system("wget -P" + dirname + '/ '+ url1)
         return 1        
 
