@@ -24,7 +24,9 @@ runlist = timespan[0:10]
 
 print("O1, start = {0}, end = {1}".format(start, end))
 
-if not os.path.exists(dirname) : os.system("mkdir " + dirname), print(dirname + " created!")
+if not os.path.exists(dirname):
+    os.system("mkdir " + dirname)
+    print(dirname + " created!")
 
 pattern1 = re.compile('H-.*.hdf5')  
 pattern2 = re.compile('L-.*.hdf5')  
