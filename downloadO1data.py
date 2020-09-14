@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+# coding: utf-8
+"""
+Sep 14, Shucheng Yang
+
+"""
+
 from gwosc.datasets import run_segment
 from gwosc.locate import get_urls
 from multiprocessing import Pool
