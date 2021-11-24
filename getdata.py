@@ -47,9 +47,10 @@ class abstractGetData(metaclass=ABCMeta):
         """根据网址下载数据"""
         try:
             os.system("wget -P " + self.dirname + '/ --no-check-certificate '+ url)
+            logging.info("Dowloaded form " + url)
             return 1
         except ValueError as e:
-            logging.info(e)
+            logging.error(e)
 
     @abstractmethod
     def download(self):
@@ -151,4 +152,19 @@ if __name__ == '__main__':
         test = getEvent(datasets)
         test.download()
     else:
-        pass
+        events = find_datasets(type='event')
+        #下载所有的事件数据
+        eventList = []
+        for item in events:
+            if item.startswith("GW"):
+                eventList.append(item[0:-3])
+        eventSet = set(eventList) #去除不同版本
+
+        for gwEvent in eventSet:
+            try:
+                test = getEvent(gwEvent)
+                test.download()
+            except Exception as e:
+                logging.error(e)
+
+
